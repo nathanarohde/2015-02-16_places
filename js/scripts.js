@@ -1,24 +1,28 @@
 $(document).ready(function() {
-  $('form#new-contact').submit(function(event) {
-    event.preventDefault();
+ $('form#new-place').submit(function(event) {
+   event.preventDefault();
 
-    var inputFirstName = $('input#new-first-name').val();
-    var inputLastName = $('input#new-last-name').val();
-    var inputAddress = $('input#new-address').val();
-    var newContact = { firstName: inputFirstName, lastName: inputLastName, address: inputAddress };
+   var inputPlace = $('input#new-place').val();
+   var inputLocation = $('input#new-location').val();
+   var inputTimeOfYear = $('input#new-time-of-year').val();
+   var inputNotes = $('input#new-notes').val();
+   var newPlace = { place: inputPlace, local: inputLocation, timeOfYear: inputTimeOfYear, notes: inputNotes };
 
-    $('ul#contacts').append('<li><span class="contact">' + newContact.firstName + " " + newContact.lastName + '</span></li>');
 
-    $('input#new-first-name').val("");
-    $('input#new-last-name').val("");
-    $('input#new-address').val("");
+   $('ul#places').append('<li><span class="place">' + newPlace.place + '</span></li>');
 
-    $('.contact').last().click(function() {
-      $('#show-contact').show();
-      $('#show-contact h2').text(newContact.firstName + " " + newContact.lastName);
-      $('.first-name').text(newContact.firstName);
-      $('.last-name').text(newContact.lastName);
-      $('.address').text(newContact.address);
-    });
-  });
+   $('input#new-place').val('');
+   $('input#new-location').val('');
+   $('input#new-time-of-year').val('');
+   $('input#new-notes').val('');
+
+   $('.place').last().click(function() {
+     $('#show-place').show();
+     $('#show-place h2').text(newPlace.place);
+     $('.new-place').text(newPlace.place);
+     $('.new-location').text(newPlace.local);
+     $('.new-time-of-year').text(newPlace.timeOfYear);
+     $('.new-notes').text(newPlace.notes);
+   });
+ });
 });
